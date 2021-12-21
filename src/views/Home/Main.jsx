@@ -1,7 +1,9 @@
 import React from 'react'
-// import { Questions } from '../../components/Questions'
+// import { useState } from 'react'
+// import { useEffect } from 'react';
 
 export default function Home() {
+    // const [value, setValue] = useState(false);
 
     const questions = [
         {id: 0, question: 'This is question 1', answer: 'this is answer 1'}, 
@@ -14,14 +16,15 @@ export default function Home() {
     const random = Math.floor(Math.random() * questions.length)
     const question = questions[random];
 
-    // const seeAnswer = () => {
-    //     console.log('question inside handle',question)
-    //     const answer = seeAnswer ? question : null;
-    // }
+    // useEffect(() => {
+    //    const onAnswer = async () => {
+    //         await setValue(true)
+    //    }
+    //    onAnswer()
+    // }, [value])
 
     const onSeeClickHandler = () => {
-        window.alert(`You've clicked the button to see the answer to, "${question.answer}"`)
-        console.log(question.answer)
+        window.alert(`You've clicked the button to see the answer to, "${question.question}"`)
     };
 
     return (
@@ -32,7 +35,7 @@ export default function Home() {
             <div style={{border: '1px solid black', margin: '100px 0 0 0'}}>
                 <p>{question.question}</p>   
 
-                <button type='button' onClick={onSeeClickHandler}>
+                <button className='' type='button' onClick={onSeeClickHandler}>
                     See Answer
                 </button>
                 
@@ -40,11 +43,16 @@ export default function Home() {
                     Next
                 </button>
             </div>
-
+            
             <div style={{border: '1px solid black', margin: '100px 0 0 0'}}>
-                <p></p>
+                <p>{question.answer}</p>
+                {console.log('it has been clicked')}
             </div>
-
+            
+            <div>
+                <p>...</p>
+            </div>
+            
         </div>
         </>
     )
